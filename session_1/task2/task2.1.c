@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
     float num1, num2;
     char operation;
     float result;
+    int state;
     
     // Check if the correct number of arguments is provided
     if (argc != 4) {
@@ -45,11 +46,21 @@ int main(int argc, char *argv[]) {
     operation = argv[2][0];  // Just take the first character of the second argument
     num2 = atof(argv[3]);  // Convert third argument to float
     
+  
     // Complete your code here
 	switch(operation){
-		case :
+		case '+':
+            result = num1 + num2;
+            printf("The result of the operation is %f\n", result);
             break;
-		default:
+        case '-':
+            result = num1 - num2;
+            printf("The result of the operation is %f\n", result);
+            break;
+        case 'x':
+            result = num1 * num2;
+            printf("The result of the operation is %f\n", result);
+		case 4:
 			printf("Operation not defined!\n");
 	}
     
