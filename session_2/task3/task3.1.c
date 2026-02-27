@@ -27,6 +27,7 @@ int main(void) {
     
     // TODO: Generate a random number between min and max
     // Hint: target = min + rand() % (max - min + 1);
+    target = min + rand() % (max - min +1);
     
     // TODO: Implement the main game loop
     // This should continue until the person decides to quit
@@ -38,21 +39,50 @@ int main(void) {
         // This should continue until the correct number is guessed
         
             printf("Enter your guess: ");
+
             
             // TODO: Read and process the input
             // Use fgets() to read input
             // Use atoi() to convert to integer
+            fgets(input, sizeof(input), stdin);
+            input[strcspn(input, "\n")] = 0; 
+            guess = atoi(input);
+
             
             num_guesses++;
             
             // TODO: Check if the guess is correct, too high, or too low
             // Provide appropriate in-game feedback
+            if (guess == target){
+                printf("Congratulations! You guessed the number in %d guesses.\n", num_guesses);
+            } else if (guess < target){
+                printf("Too low! Try again.\n");
+            } else {
+                printf("Too high! Try again.\n");
+            }
             
             // TODO: Offer a hint after several failed attempts
+            if (num_guesses == 5){
+                if (target % 2 == 0){
+                    printf("Hint: The number is even.\n");
+                } else {
+                    printf("Hint: The number is odd.\n");
+                }
+            }
             
         
         // TODO: Ask if the person wants to play again
         // Update the 'playing' flag based on the answer
+        printf("Do you want to play again? (y/n): ");
+        fgets(input, sizeof(input), stdin);
+        input[strcspn(input, "\n")] = 0; 
+        if (strcmp(input, "y") == 0 || strcmp(input, "Y")
+            == 0){
+            playing = 1;
+            target = min + rand() % (max - min +1); // Generate new target for new game
+        } else {
+            playing = 0;
+        }
     
     
     printf("\nThanks for playing!\n");

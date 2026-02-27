@@ -9,6 +9,18 @@ int main(void){
  * until a 0 (zero) is entered. Print the sum at the end.
  */
 
+ int number;
+ int* sum = 0;
+printf("Enter integers to sum (enter 0 to finish): ");
+while (1){
+    scanf("%d", &number);
+    if (number == 0){
+        break;
+    } else {
+        *sum += number;
+    }
+}
+printf("Sum = %d\n", *sum);
 
     return 0;
 }
